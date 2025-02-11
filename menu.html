@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Krishnan Homemade Food - Weekly Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Indian food menu State College" name="keywords">
+    <meta content="Weekly menu for homemade Indian food" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <style>
+        .navbar {
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            
+        }
+
+        .menu-header {
+            padding-top: 76px;
+            background: linear-gradient(rgba(15, 23, 43, .9), rgba(15, 23, 43, .9)), url('img/bg.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .daily-menu {
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+
+        .daily-menu:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .order-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 50px auto;
+        }
+
+        .pickup-time {
+            background: #f8f9fa;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pickup-time:hover {
+            background: #e9ecef;
+        }
+
+        .pickup-time.selected {
+            background: #FEA116;
+            color: white;
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #FEA116;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .menu-header {
+                padding-top: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <script src="js/date.js"></script>
+    <!-- Navbar Start -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Krishnan Homemade Food</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0 pe-4">
+                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="menu.html" class="nav-item nav-link">Menu</a>
+                <a href="index.html#how-it-works" class="nav-item nav-link">How It Works</a>
+                <a href="contact.html" class="nav-item nav-link">Contact</a>
+            </div>
+            <a href="order.html" class="btn btn-primary py-2 px-4">Pre-order Now</a>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Menu Header -->
+    <div class="container-fluid menu-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container text-center py-5">
+            <h1 class="display-3 text-white mb-3 animated slideInDown">This Week's Menu</h1>
+            <p class="text-white fs-4">Pre-order your meals for any day this week</p>
+        </div>
+    </div>
+
+    <!-- Weekly Menu Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Weekly Menu</h5>
+                <h1 class="mb-5">Choose Your Meals</h1>
+            </div>
+            <div class="row g-4">
+                <div class="row g-4">
+                    <!-- Add this CSS first -->
+<style>
+    .daily-menu {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .menu-content {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu-options {
+        flex-grow: 1;
+    }
+
+    .button-container {
+        margin-top: auto;
+        padding-top: 1rem;
+    }
+</style>
+
+<!-- Updated menu cards structure -->
+<div class="row g-4">
+    <!-- Monday -->
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="daily-menu position-relative">
+            <span class="menu-badge">Monday</span>
+            <img class="menu-image" src="img/daal.jpg" alt="Monday Special">
+            <div class="menu-content p-4">
+                <div class="menu-options">
+                    <h5 class="text-primary fw-bold mb-3">Option 1: Dal Tadka & Jeera Rice</h5>
+                    <p>Yellow lentils tempered with cumin and garlic, served with aromatic cumin rice</p>
+                    <div class="border-top pt-3 mt-3">
+                        <h5 class="text-primary fw-bold mb-3">Option 2: Chole Bhature</h5>
+                        <p>Spiced chickpea curry served with fluffy fried bread</p>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-primary w-100" onclick="showOrderModal('Monday')">Order for Monday</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tuesday -->
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="daily-menu position-relative">
+            <span class="menu-badge">Tuesday</span>
+            <img class="menu-image" src="img/paneer.png" alt="Tuesday Special">
+            <div class="menu-content p-4">
+                <div class="menu-options">
+                    <h5 class="text-primary fw-bold mb-3">Option 1: Paneer Butter Masala</h5>
+                    <p>Cottage cheese cubes in rich tomato gravy with butter and cream</p>
+                    <div class="border-top pt-3 mt-3">
+                        <h5 class="text-primary fw-bold mb-3">Option 2: Rajma Chawal</h5>
+                        <p>Kidney beans curry served with steamed rice</p>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-primary w-100" onclick="showOrderModal('Tuesday')">Order for Tuesday</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wednesday -->
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="daily-menu position-relative">
+            <span class="menu-badge">Wednesday</span>
+            <img class="menu-image" src="img/aloo.png" alt="Wednesday Special">
+            <div class="menu-content p-4">
+                <div class="menu-options">
+                    <h5 class="text-primary fw-bold mb-3">Option 1: Mixed Veg Curry & Roti</h5>
+                    <p>Fresh vegetables in aromatic curry sauce with whole wheat flatbread</p>
+                    <div class="border-top pt-3 mt-3">
+                        <h5 class="text-primary fw-bold mb-3">Option 2: Aloo Paratha & Yogurt</h5>
+                        <p>Stuffed potato flatbread served with fresh yogurt</p>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-primary w-100" onclick="showOrderModal('Wednesday')">Order for Wednesday</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thursday -->
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="daily-menu position-relative">
+            <span class="menu-badge">Thursday</span>
+            <img class="menu-image" src="img/palak.png" alt="Thursday Special">
+            <div class="menu-content p-4">
+                <div class="menu-options">
+                    <h5 class="text-primary fw-bold mb-3">Option 1: Palak Paneer & Naan</h5>
+                    <p>Cottage cheese in creamy spinach gravy with butter naan</p>
+                    <div class="border-top pt-3 mt-3">
+                        <h5 class="text-primary fw-bold mb-3">Option 2: Dal Makhani & Rice</h5>
+                        <p>Creamy black lentils with jeera rice</p>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-primary w-100" onclick="showOrderModal('Thursday')">Order for Thursday</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Friday -->
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="daily-menu position-relative">
+            <span class="menu-badge">Friday</span>
+            <img class="menu-image" src="img/biryani.png" alt="Friday Special">
+            <div class="menu-content p-4">
+                <div class="menu-options">
+                    <h5 class="text-primary fw-bold mb-3">Option 1: Vegetable Biryani</h5>
+                    <p>Fragrant rice cooked with mixed vegetables and aromatic spices</p>
+                    <div class="border-top pt-3 mt-3">
+                        <h5 class="text-primary fw-bold mb-3">Option 2: Kadhai Paneer & Roti</h5>
+                        <p>Stir-fried cottage cheese with bell peppers and onions</p>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-primary w-100" onclick="showOrderModal('Friday')">Order for Friday</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Saturday -->
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="daily-menu position-relative">
+            <span class="menu-badge">Saturday</span>
+            <img class="menu-image" src="img/pav.png" alt="Saturday Special">
+            <div class="menu-content p-4">
+                <div class="menu-options">
+                    <h5 class="text-primary fw-bold mb-3">Option 1: Malai Kofta & Naan</h5>
+                    <p>Potato and paneer dumplings in rich cream sauce</p>
+                    <div class="border-top pt-3 mt-3">
+                        <h5 class="text-primary fw-bold mb-3">Option 2: Pav Bhaji</h5>
+                        <p>Spiced vegetable mash served with butter-toasted buns</p>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-primary w-100" onclick="showOrderModal('Saturday')">Order for Saturday</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sunday -->
+    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+        <div class="daily-menu position-relative">
+            <span class="menu-badge">Sunday</span>
+            <img class="menu-image" src="img/paneer-rice.png" alt="Sunday Special">
+            <div class="menu-content p-4">
+                <div class="menu-options">
+                    <h5 class="text-primary fw-bold mb-3">Option 1: Chana Masala & Poori</h5>
+                    <p>Spiced chickpeas served with deep-fried bread</p>
+                    <div class="border-top pt-3 mt-3">
+                        <h5 class="text-primary fw-bold mb-3">Option 2: Paneer Tikka & Pulao</h5>
+                        <p>Grilled cottage cheese with vegetable pulao</p>
+                    </div>
+                </div>
+                <div class="button-container">
+                    <button class="btn btn-primary w-100" onclick="showOrderModal('Sunday')">Order for Sunday</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Order Modal -->
+    <div id="orderModal" class="order-modal">
+        <div class="modal-content">
+            <button type="button" class="modal-close-btn" onclick="closeOrderModal()">&times;</button>
+            <h4 class="text-center mb-4">Order for <span id="orderDay">Monday</span></h4>
+            <div class="mb-4">
+                <h5 class="mb-3">Select Your Meal:</h5>
+                <div class="meal-options">
+                    <label class="meal-option">
+                        <input type="radio" name="menuOption" id="option1" checked>
+                        <div class="meal-option-content">
+                            <div class="meal-name" id="option1Label">Dal Tadka & Jeera Rice</div>
+                            <div class="meal-description text-muted small"></div>
+                        </div>
+                    </label>
+                    
+                    <label class="meal-option">
+                        <input type="radio" name="menuOption" id="option2">
+                        <div class="meal-option-content">
+                            <div class="meal-name" id="option2Label">Chole Bhature</div>
+                            <div class="meal-description text-muted small"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h5 class="mb-3">Choose Pickup Time:</h5>
+                <div class="pickup-times">
+                    <div class="pickup-time" onclick="selectTime(this)">11:30 AM</div>
+                    <div class="pickup-time" onclick="selectTime(this)">12:00 PM</div>
+                    <div class="pickup-time" onclick="selectTime(this)">12:30 PM</div>
+                    <div class="pickup-time" onclick="selectTime(this)">1:00 PM</div>
+                </div>
+            </div>
+
+            <div class="text-end mt-4">
+                <button class="btn btn-secondary px-4" onclick="closeOrderModal()">Cancel</button>
+                <button class="btn btn-primary px-4 ms-2" onclick="proceedToPayment()">Order Now - $8</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Updated CSS -->
+    <style>
+        .modal-content {
+            position: relative;
+            padding: 2rem;
+        }
+
+        /* New close button styles */
+        .modal-close-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #6c757d;
+            padding: 0.25rem 0.5rem;
+            line-height: 1;
+        }
+
+        .modal-close-btn:hover {
+            color: #343a40;
+        }
+
+        .meal-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .meal-option {
+            display: block;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .meal-option input[type="radio"] {
+            display: none;
+        }
+
+        .meal-option-content {
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background: #f8f9fa;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+
+        .meal-option:hover .meal-option-content {
+            background: #e9ecef;
+        }
+
+        .meal-option input[type="radio"]:checked + .meal-option-content {
+            background: #fff5e9;
+            border-color: #FEA116;
+        }
+
+        .meal-name {
+            font-weight: 500;
+            color: #343a40;
+        }
+
+        .pickup-times {
+            display: grid;
+            gap: 0.5rem;
+        }
+
+        .pickup-time {
+            background: #f8f9fa;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.2s;
+        }
+
+        .pickup-time:hover {
+            background: #e9ecef;
+        }
+
+        .pickup-time.selected {
+            background: #FEA116;
+            color: white;
+        }
+
+        .text-muted.small {
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+        }
+    </style>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+
+    <script>
+        // Menu data structure
+        const weeklyMenu = {
+            'Monday': {
+                option1: {
+                    name: 'Dal Tadka & Jeera Rice',
+                    description: 'Yellow lentils tempered with cumin and garlic, served with aromatic cumin rice'
+                },
+                option2: {
+                    name: 'Chole Bhature',
+                    description: 'Spiced chickpea curry served with fluffy fried bread'
+                }
+            },
+            'Tuesday': {
+                option1: {
+                    name: 'Paneer Butter Masala',
+                    description: 'Cottage cheese cubes in rich tomato gravy with butter and cream'
+                },
+                option2: {
+                    name: 'Rajma Chawal',
+                    description: 'Kidney beans curry served with steamed rice'
+                }
+            },
+            'Wednesday': {
+                option1: {
+                    name: 'Mixed Veg Curry & Roti',
+                    description: 'Fresh vegetables in aromatic curry sauce with whole wheat flatbread'
+                },
+                option2: {
+                    name: 'Aloo Paratha & Yogurt',
+                    description: 'Stuffed potato flatbread served with fresh yogurt'
+                }
+            },
+            'Thursday': {
+                option1: {
+                    name: 'Palak Paneer & Naan',
+                    description: 'Cottage cheese in creamy spinach gravy with butter naan'
+                },
+                option2: {
+                    name: 'Dal Makhani & Rice',
+                    description: 'Creamy black lentils with jeera rice'
+                }
+            },
+            'Friday': {
+                option1: {
+                    name: 'Vegetable Biryani',
+                    description: 'Fragrant rice cooked with mixed vegetables and aromatic spices'
+                },
+                option2: {
+                    name: 'Kadhai Paneer & Roti',
+                    description: 'Stir-fried cottage cheese with bell peppers and onions'
+                }
+            },
+            'Saturday': {
+                option1: {
+                    name: 'Malai Kofta & Naan',
+                    description: 'Potato and paneer dumplings in rich cream sauce'
+                },
+                option2: {
+                    name: 'Pav Bhaji',
+                    description: 'Spiced vegetable mash served with butter-toasted buns'
+                }
+            },
+            'Sunday': {
+                option1: {
+                    name: 'Chana Masala & Poori',
+                    description: 'Spiced chickpeas served with deep-fried bread'
+                },
+                option2: {
+                    name: 'Paneer Tikka & Pulao',
+                    description: 'Grilled cottage cheese with vegetable pulao'
+                }
+            }
+        };
+
+        function showOrderModal(day) {
+            // First check if this day is orderable
+            if (!handleDateCheck(day)) {
+                return;
+            }
+
+            // Get the menu data for this day
+            const dayMenu = weeklyMenu[day];
+            
+            // Get modal and modal elements
+            const modal = document.getElementById('orderModal');
+            const daySpan = document.getElementById('orderDay');
+            const option1Label = document.getElementById('option1Label');
+            const option2Label = document.getElementById('option2Label');
+            
+            // Update the day display
+            daySpan.textContent = day;
+            
+            // Update the menu options
+            option1Label.textContent = dayMenu.option1.name;
+            option2Label.textContent = dayMenu.option2.name;
+            
+            // Remove any existing descriptions
+            const existingDescriptions = document.querySelectorAll('.text-muted.small');
+            existingDescriptions.forEach(desc => desc.remove());
+            
+            // Create and add description for option 1
+            const option1Description = document.createElement('div');
+            option1Description.className = 'text-muted small mt-1 ms-4';
+            option1Description.textContent = dayMenu.option1.description;
+            option1Label.parentNode.appendChild(option1Description);
+            
+            // Create and add description for option 2
+            const option2Description = document.createElement('div');
+            option2Description.className = 'text-muted small mt-1 ms-4';
+            option2Description.textContent = dayMenu.option2.description;
+            option2Label.parentNode.appendChild(option2Description);
+            
+            // Show the modal
+            modal.style.display = 'block';
+        }
+        // Rest of the modal functions remain the same
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        function selectTime(element) {
+            document.querySelectorAll('.pickup-time').forEach(el => {
+                el.classList.remove('selected');
+            });
+            element.classList.add('selected');
+        }
+
+        function proceedToPayment() {
+            const day = document.getElementById('orderDay').textContent;
+            const selectedOption = document.querySelector('input[name="menuOption"]:checked').id;
+            const selectedTime = document.querySelector('.pickup-time.selected')?.textContent;
+            
+            if (!selectedTime) {
+                alert('Please select a pickup time');
+                return;
+            }
+            
+            const menuChoice = weeklyMenu[day][selectedOption === 'option1' ? 'option1' : 'option2'].name;
+            
+            alert(`Order Summary:\nDay: ${day}\nDish: ${menuChoice}\nPickup Time: ${selectedTime}\nPrice: $8\n\nProceeding to payment...`);
+            // Implement payment processing logic here
+        }
+    </script>
+</body>
+
+</html>
